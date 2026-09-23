@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090c">
+<meta name="description" content="Agro Pet União — produtos para pets, banho e tosa.">
+<title>Agro Pet União | Cuidando de quem faz parte da família</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080b;--card:#11141a;--card2:#171b22;--orange:#ff9f00;--yellow:#ffbf32;--text:#fff;--muted:#aeb4bf;--line:rgba(255,255,255,.09);--max:1180px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 15% -10%,rgba(255,159,0,.15),transparent 28%),radial-gradient(circle at 90% 30%,rgba(255,159,0,.08),transparent 24%),var(--bg);color:var(--text);line-height:1.55}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.wrap{width:min(var(--max),92%);margin:auto}
+.header{position:sticky;top:0;z-index:50;background:rgba(7,8,11,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:12px;font-family:"Baloo 2";font-size:24px;font-weight:800}
+.logo img{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#fff}.logo b{color:var(--orange)}
+.navlinks{display:flex;align-items:center;gap:25px;font-size:14px;font-weight:700;color:#dfe2e7}.navlinks a:hover{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:14px 20px;background:var(--orange);color:#111;font-weight:900;cursor:pointer;transition:.2s;box-shadow:0 12px 35px rgba(255,159,0,.18)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 17px 42px rgba(255,159,0,.27)}
+.btn.dark{background:#171a20;color:#fff;border:1px solid var(--line);box-shadow:none}.btn.small{padding:11px 15px;font-size:13px}
+.menu{display:none;border:0;background:none;color:#fff;font-size:27px}
+.hero{padding:88px 0 75px}.heroGrid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:70px}
+.kicker{display:inline-flex;gap:8px;align-items:center;color:var(--orange);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:"Baloo 2";font-size:clamp(54px,7vw,92px);line-height:.9;letter-spacing:-2px}h1 span{color:var(--orange)}
+.hero p{font-size:18px;color:var(--muted);max-width:650px;margin:23px 0 28px}.actions{display:flex;gap:12px;flex-wrap:wrap}
+.heroVisual{min-height:510px;border:1px solid var(--line);border-radius:34px;background:linear-gradient(145deg,#1a1e25,#0b0d11);display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.4)}
+.heroVisual:before{content:"";position:absolute;width:360px;height:360px;border-radius:50%;background:rgba(255,159,0,.12);filter:blur(2px)}
+.heroVisual img{width:min(330px,66%);aspect-ratio:1;object-fit:cover;border:10px solid #fff;border-radius:50%;position:relative;box-shadow:0 25px 70px #000}
+.float{position:absolute;border:1px solid rgba(255,159,0,.35);background:rgba(15,17,21,.85);backdrop-filter:blur(10px);border-radius:17px;padding:13px 15px;font-weight:800;font-size:13px}.f1{left:7%;top:12%}.f2{right:7%;bottom:13%}
+.trust{display:flex;gap:25px;flex-wrap:wrap;margin-top:28px}.trust div{color:var(--muted);font-size:13px}.trust strong{color:#fff;display:block;font-size:18px}
+section{padding:78px 0}.head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:32px}.head h2{font-family:"Baloo 2";font-size:44px;line-height:1}.head p{color:var(--muted);max-width:570px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:.25s}.product:hover{transform:translateY(-5px);border-color:rgba(255,159,0,.32)}
+.productImg{aspect-ratio:1.1;background:#fff;overflow:hidden}.productImg img{width:100%;height:100%;object-fit:cover;transition:.3s}.product:hover .productImg img{transform:scale(1.03)}
+.productBody{padding:20px}.pill{display:inline-block;background:rgba(255,159,0,.13);color:var(--orange);font-size:11px;font-weight:900;padding:6px 10px;border-radius:99px;text-transform:uppercase}.product h3{font-family:"Baloo 2";font-size:28px;margin:9px 0 3px}.product p{color:var(--muted);font-size:14px;margin-bottom:15px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.service{padding:30px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#151920,#0e1015)}.ico{font-size:30px;margin-bottom:20px}.service h3{font-size:20px;margin-bottom:8px}.service p{color:var(--muted);font-size:14px}
+.banner{border:1px solid rgba(255,159,0,.3);background:linear-gradient(105deg,rgba(255,159,0,.16),rgba(255,159,0,.03));border-radius:30px;padding:35px;display:flex;align-items:center;justify-content:space-between;gap:25px}.banner h2{font-family:"Baloo 2";font-size:44px;line-height:1}.banner p{color:var(--muted);margin-top:7px}
+.gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:15px;border:1px solid var(--line);transition:.2s}.gallery img:hover{transform:scale(1.02);z-index:2}
+.contactGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.contact{background:var(--card);border:1px solid var(--line);border-radius:25px;padding:32px}.contact h3{font-family:"Baloo 2";font-size:33px}.contact p{color:var(--muted);margin:10px 0 20px}.row{display:flex;gap:13px;margin:16px 0;color:#ddd}.row b{color:var(--orange)}
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:12px}.faq details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px}.faq summary{cursor:pointer;font-weight:800}.faq p{color:var(--muted);font-size:14px;padding-top:12px}
+footer{border-top:1px solid var(--line);padding:35px 0;color:#8f96a2}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.social{display:flex;gap:9px}.social a{border:1px solid var(--line);border-radius:99px;padding:8px 12px;color:#ddd}
+.whatsapp{position:fixed;right:20px;bottom:20px;z-index:40;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;font-size:27px;box-shadow:0 12px 35px rgba(0,0,0,.4);border:3px solid #07100a}
+@media(max-width:850px){.navlinks{display:none}.menu{display:block}.heroGrid{grid-template-columns:1fr;gap:38px}.heroVisual{min-height:390px}.products,.services{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:repeat(3,1fr)}.contactGrid,.faq{grid-template-columns:1fr}.banner{align-items:flex-start;flex-direction:column}}
+@media(max-width:560px){.nav{height:66px}.logo{font-size:21px}.logo img{width:41px;height:41px}.hero{padding-top:58px}.hero p{font-size:16px}.heroVisual{min-height:330px}.heroVisual img{width:230px}.products,.services{grid-template-columns:1fr}.head{display:block}.head h2{margin-bottom:10px}.gallery{grid-template-columns:repeat(2,1fr)}section{padding:58px 0}.banner h2{font-size:35px}}
+</style>
+</head>
+<body>
+<header class="header"><div class="wrap"><nav class="nav">
+<a class="logo" href="#inicio"><img src="assets/logo.jpg" alt="Agro Pet União"><span>Agro <b>Pet</b> União</span></a>
+<div class="navlinks"><a href="#produtos">Produtos</a><a href="#servicos">Serviços</a><a href="#galeria">Galeria</a><a href="#contato">Contato</a><a class="btn small" href="https://wa.me/5562993813744?text=Olá%20Agro%20Pet%20União!" target="_blank">WhatsApp</a></div>
+<button class="menu" onclick="document.querySelector('.navlinks').style.display='flex';this.style.display='none'">☰</button>
+</nav></div></header>
+
+<main id="inicio">
+<section class="hero"><div class="wrap heroGrid">
+<div>
+<div class="kicker">🐾 Amor em cada cuidado</div>
+<h1>O melhor para o seu <span>pet.</span></h1>
+<p>Produtos, cuidados e carinho para quem faz parte da sua família. Conheça a Agro Pet União e fale com a gente pelo WhatsApp.</p>
+<div class="actions"><a class="btn" href="https://wa.me/5562993813744?text=Olá%20Agro%20Pet%20União!%20Quero%20saber%20mais." target="_blank">💬 Falar no WhatsApp</a><a class="btn dark" href="https://www.instagram.com/agro_.pet_uniao/" target="_blank">📷 Instagram</a></div>
+<div class="trust"><div><strong>🐶 Cães</strong>Alimentação e cuidados</div><div><strong>🐱 Gatos</strong>Produtos selecionados</div><div><strong>🛁 Banho & tosa</strong>Carinho e higiene</div></div>
+</div>
+<div class="heroVisual"><span class="float f1">🐾 Cuidado de verdade</span><span class="float f2">⭐ Agro Pet União</span><img src="assets/logo.jpg" alt="Logo Agro Pet União"></div>
+</div></section>
+
+<section id="produtos"><div class="wrap"><div class="head"><div><div class="kicker">🛍️ Catálogo</div><h2>Encontre o que seu pet precisa</h2></div><p>Alguns dos tipos de produtos mostrados no perfil da Agro Pet União. Consulte disponibilidade, marcas e valores pelo WhatsApp.</p></div>
+<div class="products">
+<article class="product"><div class="productImg"><img src="assets/produto-supremo.jpg" alt="Produtos de alimentação"></div><div class="productBody"><span class="pill">Alimentação</span><h3>Rações</h3><p>Opções para diferentes fases e necessidades.</p><a class="btn small" href="https://wa.me/5562993813744?text=Olá!%20Quero%20consultar%20as%20rações%20disponíveis." target="_blank">Consultar</a></div></article>
+<article class="product"><div class="productImg"><img src="assets/produto-simparic.jpg" alt="Produtos de cuidados"></div><div class="productBody"><span class="pill">Cuidados</span><h3>Medicamentos</h3><p>Consulte os produtos disponíveis para seu pet.</p><a class="btn small" href="https://wa.me/5562993813744?text=Olá!%20Quero%20consultar%20os%20medicamentos%20disponíveis." target="_blank">Consultar</a></div></article>
+<article class="product"><div class="productImg"><img src="assets/produto-shampoo.jpg" alt="Shampoo para pets"></div><div class="productBody"><span class="pill">Higiene</span><h3>Higiene & beleza</h3><p>Shampoos e itens para manter seu pet bem cuidado.</p><a class="btn small" href="https://wa.me/5562993813744?text=Olá!%20Quero%20consultar%20os%20produtos%20de%20higiene." target="_blank">Consultar</a></div></article>
+</div></div></section>
+
+<section id="servicos"><div class="wrap"><div class="head"><div><div class="kicker">❤️ Nossos cuidados</div><h2>Serviços para seu melhor amigo</h2></div></div>
+<div class="services"><article class="service"><div class="ico">🛁</div><h3>Banho</h3><p>Higiene, cuidado e atenção para seu pet ficar limpo e confortável.</p></article><article class="service"><div class="ico">✂️</div><h3>Tosa</h3><p>Cuidados de estética e higiene para deixar seu companheiro ainda mais bonito.</p></article><article class="service"><div class="ico">🐾</div><h3>Atendimento</h3><p>Chame no WhatsApp para consultar horários, produtos e disponibilidade.</p></article></div></div></section>
+
+<section><div class="wrap"><div class="banner"><div><div class="kicker">🔥 Fale com a gente</div><h2>Precisa de alguma coisa para o seu pet?</h2><p>Envie uma mensagem e consulte produtos, preços e horários.</p></div><a class="btn" href="https://wa.me/5562993813744?text=Olá%20Agro%20Pet%20União!%20Gostaria%20de%20consultar%20um%20produto." target="_blank">Pedir pelo WhatsApp</a></div></div></section>
+
+<section id="galeria"><div class="wrap"><div class="head"><div><div class="kicker">📸 Nosso dia a dia</div><h2>Galeria Agro Pet União</h2></div><a class="btn dark" href="https://www.instagram.com/agro_.pet_uniao/" target="_blank">Ver Instagram</a></div>
+<div class="gallery">
+<img src="assets/banho-1.jpg" alt="Pet no banho e tosa"><img src="assets/banho-2.jpg" alt="Pet no banho e tosa"><img src="assets/banho-3.jpg" alt="Pet no banho e tosa"><img src="assets/banho-4.jpg" alt="Pet"><img src="assets/banho-5.jpg" alt="Pet">
+<img src="assets/produto-calcioral.jpg" alt="Produto"><img src="assets/produto-vermex.jpg" alt="Produto"><img src="assets/produto-equivet.jpg" alt="Produto"><img src="assets/produto-shampoo.jpg" alt="Produto"><img src="assets/produto-simparic.jpg" alt="Produto">
+</div></div></section>
+
+<section><div class="wrap"><div class="head"><div><div class="kicker">❓ Dúvidas</div><h2>Perguntas frequentes</h2></div></div>
+<div class="faq"><details><summary>Quais produtos vocês vendem?</summary><p>O perfil apresenta rações, produtos de higiene, medicamentos e outros itens para pets. A disponibilidade muda conforme o estoque.</p></details><details><summary>Vocês fazem banho e tosa?</summary><p>Sim. O perfil da loja informa banho e tosa. Chame no WhatsApp para consultar horários.</p></details><details><summary>Como consulto preços?</summary><p>Use o botão do WhatsApp e informe o produto que você procura. A equipe pode confirmar valor e disponibilidade.</p></details><details><summary>Onde fica a Agro Pet União?</summary><p>Av. Comercial Q 57 L 03, Bairro de Lourdes. Confirme detalhes de atendimento pelo WhatsApp.</p></details></div></div></section>
+
+<section id="contato"><div class="wrap"><div class="contactGrid">
+<div class="contact"><div class="kicker">📍 Visite a loja</div><h3>Agro Pet União</h3><div class="row"><span>📍</span><div><b>Endereço</b><br>Av. Comercial Q 57 L 03<br>Bairro de Lourdes</div></div><div class="row"><span>📞</span><div><b>WhatsApp</b><br>(62) 99399-6239</div></div></div>
+<div class="contact"><div class="kicker">💬 Atendimento</div><h3>Vamos cuidar do seu pet?</h3><p>Fale com a Agro Pet União para tirar dúvidas, consultar produtos ou agendar banho e tosa.</p><div class="actions"><a class="btn" href="https://wa.me/5562993813744?text=Olá%20Agro%20Pet%20União!" target="_blank">WhatsApp</a><a class="btn dark" href="https://www.instagram.com/agro_.pet_uniao/" target="_blank">Instagram</a></div></div>
+</div></div></section>
+</main>
+
+<a class="whatsapp" aria-label="WhatsApp" href="https://wa.me/5562993813744?text=Olá%20Agro%20Pet%20União!" target="_blank">◉</a>
+<footer><div class="wrap foot"><div>© 2026 Agro Pet União — Todos os direitos reservados.</div><div class="social"><a href="https://www.instagram.com/agro_.pet_uniao/" target="_blank">Instagram</a><a href="https://wa.me/5562993813744" target="_blank">WhatsApp</a></div></div></footer>
+</body>
+</html>
