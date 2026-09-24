@@ -1,4 +1,5 @@
 <!doctype html>
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/>
@@ -53,7 +54,7 @@ body:has(input[name="produto"][value="0"]:checked){--p0:1}body:has(input[name="p
 .cart-pure .cart-item{display:none;padding:2px 0}
 .cart-pure .cart-empty{display:block;color:#cbd3c9;font-size:12px}
 .cart-pure .order-link{display:block;text-align:center;background:#f4ae16;color:#111;border-radius:10px;padding:11px 12px;font-weight:950;text-decoration:none}
-.cart-pure .count-number{counter-reset:none}
+.cart-pure .count-number{counter-reset:none!important;font-size:16px!important}
 body{counter-reset:cartCount}
 body:has(#produto-0:checked){counter-increment:cartCount}
 body:has(#produto-0:checked) .cart-item[data-i="0"]{display:block}
@@ -130,7 +131,16 @@ body:has(#produto-35:checked) .cart-item[data-i="35"]{display:block}
 body:has(#produto-36:checked){counter-increment:cartCount}
 body:has(#produto-36:checked) .cart-item[data-i="36"]{display:block}
 .cart-pure .count-number::after{content:none!important}
-</style></head>
+</style>
+<style id="cross-browser-compat">
+.select{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.select input{cursor:pointer;}
+.select.selected{background:var(--gold)!important;color:#19140a!important;}
+.select.selected span::after{content:" ✓";}
+.cart-pure .count-number::after{content:none!important;display:none!important;}
+.cart-pure .count-number{font-size:16px!important;}
+</style>
+</head>
 <body>
 <div class="top">🐾 Agro Pet União • Produtos para cães e gatos • Banho e Tosa</div>
 <nav><div class="navin">
@@ -162,8 +172,20 @@ body:has(#produto-36:checked) .cart-item[data-i="36"]{display:block}
 (function () {
   'use strict';
 
+  function hasClass(el, name) {
+    return el && (' ' + el.className + ' ').indexOf(' ' + name + ' ') !== -1;
+  }
+
+  function findCard(el) {
+    while (el && el !== document.body) {
+      if (hasClass(el, 'card')) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+
   function initCart() {
-    var checks = Array.prototype.slice.call(document.querySelectorAll('input[name="produto"]'));
+    var checks = Array.prototype.slice.call(document.getElementsByName('produto'));
     var link = document.getElementById('orderLink');
     var countEl = document.querySelector('.count-number');
     var emptyEl = document.querySelector('.cart-empty');
@@ -172,32 +194,60 @@ body:has(#produto-36:checked) .cart-item[data-i="36"]{display:block}
     if (!checks.length || !link || !countEl) return;
 
     function updateCart() {
-      var selected = checks.filter(function (check) { return check.checked; });
+      var selected = [];
+      var i;
+
+      for (i = 0; i < checks.length; i++) {
+        if (checks[i].checked) selected.push(checks[i]);
+      }
+
       var count = selected.length;
       countEl.textContent = String(count);
+
       if (emptyEl) emptyEl.style.display = count ? 'none' : 'block';
 
-      itemEls.forEach(function (item) {
-        var i = Number(item.getAttribute('data-i'));
-        item.style.display = (checks[i] && checks[i].checked) ? 'block' : 'none';
-      });
+      for (i = 0; i < itemEls.length; i++) {
+        var index = Number(itemEls[i].getAttribute('data-i'));
+        itemEls[i].style.display = (checks[index] && checks[index].checked) ? 'block' : 'none';
+      }
 
-      var lines = selected.map(function (check) {
-        var card = check.closest('.card');
+      for (i = 0; i < checks.length; i++) {
+        var label = checks[i].parentNode;
+        if (label && hasClass(label, 'select')) {
+          if (checks[i].checked) {
+            label.classList.add('selected');
+            label.setAttribute('aria-pressed', 'true');
+          } else {
+            label.classList.remove('selected');
+            label.setAttribute('aria-pressed', 'false');
+          }
+        }
+      }
+
+      var lines = [];
+      for (i = 0; i < selected.length; i++) {
+        var card = findCard(selected[i]);
         var title = card ? card.querySelector('h3') : null;
-        return title ? '• ' + title.textContent.trim() + ' — 1 unidade' : '';
-      }).filter(Boolean);
+        if (title) lines.push('• ' + title.textContent.replace(/\s+/g, ' ').trim() + ' — 1 unidade');
+      }
 
-      var message = lines.length
-        ? 'Olá, Agro Pet União! 🐾\n\nGostaria de fazer este pedido:\n\n' + lines.join('\n') + '\n\nPode me informar o valor e a disponibilidade?'
-        : 'Olá, Agro Pet União! 🐾\n\nGostaria de fazer um pedido.';
+      var message;
+      if (lines.length) {
+        message = 'Olá, Agro Pet União! 🐾\n\nGostaria de fazer este pedido:\n\n' + lines.join('\n') + '\n\nPode me informar o valor e a disponibilidade?';
+      } else {
+        message = 'Olá, Agro Pet União! 🐾\n\nGostaria de fazer um pedido.';
+      }
 
       link.href = 'https://wa.me/5562993813744?text=' + encodeURIComponent(message);
     }
 
-    checks.forEach(function (check) {
-      check.addEventListener('change', updateCart, false);
-    });
+    for (var i = 0; i < checks.length; i++) {
+      checks[i].addEventListener('change', updateCart, false);
+    }
+
+    link.addEventListener('click', function () {
+      updateCart();
+    }, false);
 
     updateCart();
   }
@@ -209,17 +259,6 @@ body:has(#produto-36:checked) .cart-item[data-i="36"]{display:block}
   }
 }());
 </script>
-<script>
-(function(){
-  var ua=navigator.userAgent||'';
-  var isSafari=/Safari\//.test(ua)&&!/Chrome\//.test(ua)&&!/CriOS\//.test(ua)&&!/FxiOS\//.test(ua)&&!/EdgiOS\//.test(ua);
-  if(!isSafari){
-    var n=document.createElement('div');
-    n.setAttribute('role','note');
-    n.textContent='Para usar o carrinho e enviar pedidos pelo WhatsApp, abra este site no Safari.';
-    n.style.cssText='position:fixed;inset:0;z-index:100000;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;font:700 18px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;';
-    document.documentElement.appendChild(n);
-  }
-}());
-</script>
+
 </body>
+</html>
